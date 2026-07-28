@@ -1,7 +1,8 @@
 <div align="center">
 <img src="public/icon-128.png" alt="logo"/>
-<h1> Chrome 扩展脚手架<br/>React + Vite + TypeScript</h1>
+<h1> Chrome 扩展脚手架<br/>React + <b>Vite 8</b> + TypeScript</h1>
 
+![](https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![](https://badges.aleen42.com/src/vitejs.svg)
@@ -9,7 +10,8 @@
 <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Jonghakseo/chrome-extension-boilerplate-react-viteFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
 
 
-> 本项目收录于 [Awesome Vite](https://github.com/vitejs/awesome-vite)
+> 基于 **Vite 8 + Rolldown**，生产构建与本地热重载更快。<br/>
+> 收录于 [Awesome Vite](https://github.com/vitejs/awesome-vite)
 
 **语言**
 
@@ -40,14 +42,15 @@
 
 ## 简介 <a name="简介"></a>
 
-本脚手架用于基于 React 与 TypeScript 开发 Chrome 扩展。
-> 重点是用 Vite 提升构建速度与开发体验。
+基于 React、TypeScript 与 **Vite 8** 的 Manifest V3 Chrome 扩展脚手架。
+
+> **速度优先：** Vite 8 内置 [Rolldown](https://rolldown.rs/) 生产打包；多入口扩展构建通常在 **数百毫秒** 级完成，明显快于旧版 Rollup 时代的数秒级等待。开发态配合 HRR（热重建与刷新），迭代同样轻快。
 
 ## 特性 <a name="特性"></a>
 
+- **[Vite 8](https://vitejs.dev/) + Rolldown** — 生产构建更快（`build.rolldownOptions`），插件链路跟上最新版
 - [React 18](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite 8](https://vitejs.dev/)（基于 Rolldown；配置使用 `build.rolldownOptions`）
+- [TypeScript](https://www.typescriptlang.org/) **5.7**
 - [Vitest 4](https://vitest.dev/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [pnpm 11](https://pnpm.io/)
@@ -58,9 +61,18 @@
 - [Commitlint](https://commitlint.js.org/#/guides-local-setup?id=install-commitlint)
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
-- HRR（热重建与刷新 / 重载）
+- HRR（热重建与刷新 / 重载）— HMR 辅助脚本用 Sucrase 编译，`pnpm dev` 启动更快
 
 ## 技术栈 / 工具链 <a name="技术栈--工具链"></a>
+
+### 为什么用 Vite 8
+
+| 收益 | 你得到什么 |
+|------|------------|
+| 生产构建更快 | Vite 8 底层 Rolldown；本模板多入口 `pnpm build` 在常见机器上约 **100–300ms** |
+| `pnpm dev` 启动更快 | `build:hmr` 用 `@rollup/plugin-sucrase`（小脚本不再走完整 `tsc`） |
+| React 工具链对齐 | `@vitejs/plugin-react` **6.x**，peer 匹配 Vite 8 |
+| Content script 可用 | 处理 Vite 8 preload / `import.meta`；Firefox 相对路径 `import()` 自动改写 |
 
 主要版本以 `package.json`、`.nvmrc` 为准：
 
@@ -68,7 +80,7 @@
 |------|------|
 | Node.js | `>= 20.19` 或 `>= 22.12`（Vite 8 要求）；推荐 **24**（`.nvmrc` = `v24.16.0`） |
 | pnpm | **11.13.x**（`packageManager`: `pnpm@11.13.1`） |
-| Vite | **8.1.x**（在 `pnpm-workspace.yaml` 中 override） |
+| **Vite** | **8.1.x**（在 `pnpm-workspace.yaml` 中 override） |
 | `@vitejs/plugin-react` | **6.x** |
 | Vitest | **4.x** |
 | TypeScript | **5.7.x**（`@vitejs/plugin-react` 6 类型声明所需） |
@@ -80,8 +92,6 @@ Vite 8 与 content script 相关说明：
 - Rolldown 下已停用 `inlineVitePreloadScript`（文件仅作参考保留）。
 
 pnpm 11 的 `allowBuilds`、`overrides.vite`、`confirmModulesPurge` 写在 `pnpm-workspace.yaml`。
-
-`pnpm build:hmr` 用 `@rollup/plugin-sucrase` 编译体积极小的 WebSocket 热重载脚本（不用完整 `tsc`），从而加快 `pnpm dev` 启动。
 
 ## 安装 <a name="安装"></a>
 

@@ -1,7 +1,8 @@
 <div align="center">
 <img src="public/icon-128.png" alt="logo"/>
-<h1> Chrome Extension Boilerplate with<br/>React + Vite + TypeScript</h1>
+<h1> Chrome Extension Boilerplate with<br/>React + <b>Vite 8</b> + TypeScript</h1>
 
+![](https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![](https://badges.aleen42.com/src/vitejs.svg)
@@ -9,7 +10,8 @@
 <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Jonghakseo/chrome-extension-boilerplate-react-viteFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
 
 
-> This project is listed in the [Awesome Vite](https://github.com/vitejs/awesome-vite)
+> Powered by **Vite 8 + Rolldown** for faster production builds and snappy local reload.<br/>
+> Listed in [Awesome Vite](https://github.com/vitejs/awesome-vite)
 
 **Languages**
 
@@ -40,14 +42,15 @@
 
 ## Intro <a name="intro"></a>
 
-This boilerplate is made for creating chrome extensions using React and Typescript.
-> The focus was on improving the build speed and development experience with Vite.
+A Manifest V3 Chrome extension boilerplate built with React, TypeScript, and **Vite 8**.
+
+> **Speed first:** Vite 8 ships a [Rolldown](https://rolldown.rs/)-based production bundler — multi-entry extension builds finish in hundreds of milliseconds instead of multi-second Rollup-era waits. Dev mode pairs that with HRR (hot rebuild & refresh) so iteration stays fast.
 
 ## Features <a name="features"></a>
 
+- **[Vite 8](https://vitejs.dev/) + Rolldown** — fast production build (`build.rolldownOptions`), modern plugin pipeline
 - [React 18](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite 8](https://vitejs.dev/) (Rolldown-based bundler; config uses `build.rolldownOptions`)
+- [TypeScript](https://www.typescriptlang.org/) **5.7**
 - [Vitest 4](https://vitest.dev/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [pnpm 11](https://pnpm.io/)
@@ -58,9 +61,18 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [Commitlint](https://commitlint.js.org/#/guides-local-setup?id=install-commitlint)
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
-- HRR(Hot Rebuild & Refresh/Reload)
+- HRR (Hot Rebuild & Refresh/Reload) — Sucrase-compiled HMR helpers so `pnpm dev` starts quickly
 
 ## Tech stack / Tooling <a name="tech-stack--tooling"></a>
+
+### Why Vite 8 here
+
+| Benefit | What you get |
+|---------|----------------|
+| Faster production builds | Rolldown under Vite 8; typical `pnpm build` for this multi-entry template lands in **~100–300ms** on a modern machine |
+| Faster `pnpm dev` boot | `build:hmr` uses `@rollup/plugin-sucrase` (no full `tsc` for tiny reload scripts) |
+| Up-to-date React tooling | `@vitejs/plugin-react` **6.x** matched to Vite 8 |
+| Content-script safe | Vite 8 preload / `import.meta` handled for classic content scripts; Firefox dynamic `import()` rewritten |
 
 Pinned / expected majors (see `package.json` and `.nvmrc`):
 
@@ -68,7 +80,7 @@ Pinned / expected majors (see `package.json` and `.nvmrc`):
 |------|---------|
 | Node.js | `>= 20.19` or `>= 22.12` (Vite 8); recommended **24** (`.nvmrc` = `v24.16.0`) |
 | pnpm | **11.13.x** (`packageManager`: `pnpm@11.13.1`) |
-| Vite | **8.1.x** (override in `pnpm-workspace.yaml`) |
+| **Vite** | **8.1.x** (override in `pnpm-workspace.yaml`) |
 | `@vitejs/plugin-react` | **6.x** |
 | Vitest | **4.x** |
 | TypeScript | **5.7.x** (required by `@vitejs/plugin-react` 6 type definitions) |
@@ -80,8 +92,6 @@ Content-script build notes for Vite 8:
 - `inlineVitePreloadScript` is disabled under Rolldown (file kept for reference only).
 
 pnpm 11 settings (`allowBuilds`, `overrides.vite`, `confirmModulesPurge`) live in `pnpm-workspace.yaml`.
-
-`pnpm build:hmr` compiles the tiny WebSocket reload helpers with `@rollup/plugin-sucrase` (not `tsc`) so `pnpm dev` starts faster.
 
 ## Installation <a name="installation"></a>
 
