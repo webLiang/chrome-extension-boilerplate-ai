@@ -1,12 +1,13 @@
-/// <reference types="vitest" />
+import type {} from 'vitest/config';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path, { resolve } from 'path';
 import makeManifest from './utils/plugins/make-manifest';
 import customDynamicImport from './utils/plugins/custom-dynamic-import';
+import fixContentImportMeta from './utils/plugins/fix-content-import-meta';
 import addHmr from './utils/plugins/add-hmr';
 import watchRebuild from './utils/plugins/watch-rebuild';
-import inlineVitePreloadScript from './utils/plugins/inline-vite-preload-script';
+// inlineVitePreloadScript is disabled for Vite 8 / Rolldown — see utils/plugins/inline-vite-preload-script.ts
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
@@ -37,9 +38,10 @@ export default defineConfig({
     }),
     react(),
     customDynamicImport(),
+    // Content scripts are classic scripts — strip Vite 8 preload import.meta usage
+    fixContentImportMeta(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
     isDev && watchRebuild({ afterWriteBundle: regenerateCacheInvalidationKey }),
-    inlineVitePreloadScript(),
   ],
   publicDir,
   build: {
@@ -50,7 +52,7 @@ export default defineConfig({
     modulePreload: false,
     reportCompressedSize: isProduction,
     emptyOutDir: !isDev,
-    rollupOptions: {
+    rolldownOptions: {
       input: {
         devtools: resolve(pagesDir, 'devtools', 'index.html'),
         panel: resolve(pagesDir, 'panel', 'index.html'),
@@ -67,8 +69,9 @@ export default defineConfig({
         entryFileNames: 'src/pages/[name]/index.js',
         chunkFileNames: isDev ? 'assets/js/[name].js' : 'assets/js/[name].[hash].js',
         assetFileNames: assetInfo => {
-          const { name } = path.parse(assetInfo.name);
-          const assetFileName = name === 'contentStyle' ? `${name}${getCacheInvalidationKey()}` : name;
+          const name = assetInfo.names?.[0] ?? assetInfo.name;
+          const { name: baseName } = path.parse(name ?? '');
+          const assetFileName = baseName === 'contentStyle' ? `${baseName}${getCacheInvalidationKey()}` : baseName;
           return `assets/[ext]/${assetFileName}.chunk.[ext]`;
         },
       },

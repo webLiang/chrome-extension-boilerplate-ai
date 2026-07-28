@@ -11,12 +11,18 @@
 
 > This project is listed in the [Awesome Vite](https://github.com/vitejs/awesome-vite)
 
+**Languages**
+
+- **English** (current)：[README.md](README.md)
+- **中文**：[README.zh_CN.md](README.zh_CN.md)
+
 </div>
 
 ## Table of Contents
 
 - [Intro](#intro)
 - [Features](#features)
+- [Tech stack / Tooling](#tech-stack--tooling)
 - [Installation](#installation)
     - [Procedures](#procedures)
         - [Chrome](#chrome)
@@ -41,9 +47,10 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 - [React 18](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Vitest](https://vitest.dev/)
+- [Vite 8](https://vitejs.dev/) (Rolldown-based bundler; config uses `build.rolldownOptions`)
+- [Vitest 4](https://vitest.dev/)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
-- [Vite](https://vitejs.dev/)
+- [pnpm 11](https://pnpm.io/)
 - [SASS](https://sass-lang.com/)
 - [Prettier](https://prettier.io/)
 - [ESLint](https://eslint.org/)
@@ -53,13 +60,36 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
 - HRR(Hot Rebuild & Refresh/Reload)
 
+## Tech stack / Tooling <a name="tech-stack--tooling"></a>
+
+Pinned / expected majors (see `package.json` and `.nvmrc`):
+
+| Tool | Version |
+|------|---------|
+| Node.js | `>= 20.19` or `>= 22.12` (Vite 8); recommended **24** (`.nvmrc` = `v24.16.0`) |
+| pnpm | **11.13.x** (`packageManager`: `pnpm@11.13.1`) |
+| Vite | **8.1.x** (override in `pnpm-workspace.yaml`) |
+| `@vitejs/plugin-react` | **6.x** |
+| Vitest | **4.x** |
+| TypeScript | **5.7.x** (required by `@vitejs/plugin-react` 6 type definitions) |
+
+Content-script build notes for Vite 8:
+
+- Classic content scripts cannot use `import.meta`; `fixContentImportMeta` rewrites Vite preload helpers.
+- Firefox relative `import()` is rewritten in `renderChunk` (`customDynamicImport`) because Vite 8 / Rolldown removed `renderDynamicImport`.
+- `inlineVitePreloadScript` is disabled under Rolldown (file kept for reference only).
+
+pnpm 11 settings (`allowBuilds`, `overrides.vite`, `confirmModulesPurge`) live in `pnpm-workspace.yaml`.
+
+`pnpm build:hmr` compiles the tiny WebSocket reload helpers with `@rollup/plugin-sucrase` (not `tsc`) so `pnpm dev` starts faster.
+
 ## Installation <a name="installation"></a>
 
 ## Procedures: <a name="procedures"></a>
 
 1. Clone this repository.
 2. Change `extensionDescription` and `extensionName` in messages.json
-3. Install pnpm globally: `npm install -g pnpm` (check your node version >= 16.6, recommended >= 18)
+3. Use Node **>= 20.19** / **>= 22.12** (recommended: match `.nvmrc`, e.g. Node 24). Enable pnpm 11 via Corepack (`corepack enable`) or install pnpm globally (`npm install -g pnpm@11`).
 4. Run `pnpm install`
 
 ## And next, depending on the needs:
@@ -197,7 +227,8 @@ for [Ignore unnecessary warnings](https://github.com/TanStack/query/pull/5161#is
 ```ts
 export default defineConfig({
   build: {
-    rollupOptions: {
+    // Vite 8 uses Rolldown — prefer rolldownOptions (not rollupOptions)
+    rolldownOptions: {
       // Add below code ~~~~~
       onwarn(warning, warn) {
         if (

@@ -1,6 +1,11 @@
 /**
- * solution for multiple content scripts
- * https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/177#issuecomment-1784112536
+ * Previously used to inline Vite's preload helper into content script chunks
+ * (https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/177).
+ *
+ * Disabled for Vite 8 / Rolldown: scraping meta.chunks for a /preload/ chunk is
+ * unreliable under Rolldown. Content-script `import.meta` is handled by
+ * fix-content-import-meta.ts instead. Kept for reference only — do not register
+ * this plugin in vite.config.ts.
  */
 export default function inlineVitePreloadScript() {
   let __vitePreload = '';

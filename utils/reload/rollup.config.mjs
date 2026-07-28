@@ -1,6 +1,15 @@
-import typescript from '@rollup/plugin-typescript';
+import sucrase from '@rollup/plugin-sucrase';
 
-const plugins = [typescript()];
+/**
+ * HMR helpers are tiny (~100 LOC). Prefer Sucrase over @rollup/plugin-typescript
+ * so `pnpm build:hmr` does not cold-start tsc three times (~1–2s → tens of ms).
+ */
+const plugins = [
+  sucrase({
+    exclude: ['node_modules/**'],
+    transforms: ['typescript'],
+  }),
+];
 
 export default [
   {

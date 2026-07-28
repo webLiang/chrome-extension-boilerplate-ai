@@ -9,21 +9,25 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "types": ["vite/client", "node"],
+    "moduleResolution": "bundler",
+    "types": ["node", "chrome"],
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["./src/global.d.ts", "node_modules/@types"],
+    "isolatedModules": true,
+    "moduleDetection": "force",
     "paths": {
       "@root/*": ["./*"],
       "@src/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
       "@pages/*": ["src/pages/*"],
       "virtual:reload-on-update-in-background-script": ["./src/global.d.ts"],
-      "virtual:reload-on-update-in-view": ["./src/global.d.ts"]
+      "virtual:reload-on-update-in-view": ["./src/global.d.ts"],
+      "vite": ["./node_modules/vite/dist/node/index.d.ts"],
+      "@vitejs/plugin-react": ["./node_modules/@vitejs/plugin-react/dist/index.d.ts"],
+      "vitest/config": ["./node_modules/vitest/config.d.ts"]
     }
   },
-  "include": ["src", "utils", "vite.config.ts", "node_modules/@types"]
+  "include": ["src", "utils", "vite.config.ts"]
 }
