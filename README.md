@@ -6,8 +6,8 @@
 ![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![](https://badges.aleen42.com/src/vitejs.svg)
-![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
-<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Jonghakseo/chrome-extension-boilerplate-react-viteFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
+![GitHub action badge](https://github.com/webLiang/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
+<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/webLiang/chrome-extension-boilerplate-react-vite&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
 
 
 > Powered by **Vite 8 + Rolldown** for faster production builds and snappy local reload.<br/>
@@ -23,6 +23,7 @@
 ## Table of Contents
 
 - [Intro](#intro)
+- [Why this template](#why-this-template)
 - [Features](#features)
 - [Tech stack / Tooling](#tech-stack--tooling)
 - [Installation](#installation)
@@ -45,6 +46,18 @@
 A Manifest V3 Chrome extension boilerplate built with React, TypeScript, and **Vite 8**.
 
 > **Speed first:** Vite 8 ships a [Rolldown](https://rolldown.rs/)-based production bundler — multi-entry extension builds finish in hundreds of milliseconds instead of multi-second Rollup-era waits. Dev mode pairs that with HRR (hot rebuild & refresh) so iteration stays fast.
+
+## Why this template <a name="why-this-template"></a>
+
+[Jonghakseo/chrome-extension-boilerplate-react-vite](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite) was a widely used React + Vite extension starter. It is now **archived** (read-only since 14 Feb 2026) and no longer maintained. Its later Turborepo layout is also heavy: many packages, slower `pnpm install` / `pnpm dev` boot, and a longer feedback loop.
+
+This repository is an independently maintained **lean, speed-first** template:
+
+- Single package (no Turborepo)
+- Vite 8 + Rolldown — typical production build in ~100–300ms
+- Fast local HRR so you can iterate on popup / content / background without waiting on a monorepo graph
+
+Inspired by the original project; this template evolves on its own.
 
 ## Features <a name="features"></a>
 
@@ -462,7 +475,7 @@ manifest.json
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Jonghakseo/chrome-extension-boilerplate-react-vite&type=Date)](https://star-history.com/#Jonghakseo/chrome-extension-boilerplate-react-vite&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=webLiang/chrome-extension-boilerplate-react-vite&type=Date)](https://star-history.com/#webLiang/chrome-extension-boilerplate-react-vite&Date)
 
 ## Contributors
 

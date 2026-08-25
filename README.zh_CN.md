@@ -6,8 +6,8 @@
 ![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![](https://badges.aleen42.com/src/vitejs.svg)
-![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
-<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Jonghakseo/chrome-extension-boilerplate-react-viteFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
+![GitHub action badge](https://github.com/webLiang/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
+<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/webLiang/chrome-extension-boilerplate-react-vite&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
 
 
 > 基于 **Vite 8 + Rolldown**，生产构建与本地热重载更快。<br/>
@@ -23,6 +23,7 @@
 ## 目录
 
 - [简介](#简介)
+- [为什么用这个模板](#为什么用这个模板)
 - [特性](#特性)
 - [技术栈 / 工具链](#技术栈--工具链)
 - [安装](#安装)
@@ -45,6 +46,18 @@
 基于 React、TypeScript 与 **Vite 8** 的 Manifest V3 Chrome 扩展脚手架。
 
 > **速度优先：** Vite 8 内置 [Rolldown](https://rolldown.rs/) 生产打包；多入口扩展构建通常在 **数百毫秒** 级完成，明显快于旧版 Rollup 时代的数秒级等待。开发态配合 HRR（热重建与刷新），迭代同样轻快。
+
+## 为什么用这个模板 <a name="为什么用这个模板"></a>
+
+[Jonghakseo/chrome-extension-boilerplate-react-vite](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite) 曾是常用的 React + Vite 扩展脚手架。该仓库已于 **2026-02-14 归档（只读）**，不再迭代。后期变成 Turborepo 多包结构后，安装、`pnpm dev` 启动和构建反馈都偏慢。
+
+本仓库是独立维护的 **精简、速度优先** 模板：
+
+- 单包（无 Turborepo）
+- Vite 8 + Rolldown — 生产构建通常约 100–300ms
+- 开发态 HRR，改 popup / content / background 不必等一整套 monorepo 图
+
+致谢原项目，本模板独立演进。
 
 ## 特性 <a name="特性"></a>
 
@@ -462,7 +475,7 @@ createRoot(rootIntoShadow).render(
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Jonghakseo/chrome-extension-boilerplate-react-vite&type=Date)](https://star-history.com/#Jonghakseo/chrome-extension-boilerplate-react-vite&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=webLiang/chrome-extension-boilerplate-react-vite&type=Date)](https://star-history.com/#webLiang/chrome-extension-boilerplate-react-vite&Date)
 
 ## Contributors
 
