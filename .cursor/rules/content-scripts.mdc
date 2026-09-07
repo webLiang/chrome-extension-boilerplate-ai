@@ -1,0 +1,32 @@
+---
+description: Content script entries, extra injected JS, Shadow CSS, ISOLATED world
+globs: src/pages/content/**
+alwaysApply: false
+---
+
+# Content scripts
+
+Classic scripts, not `type: module`. See [AGENTS.md](../../AGENTS.md#add-an-entry).
+
+## Entry (`**/content/**/index.ts`)
+
+```ts
+import('@pages/content/ui/root');           // ✅
+import('@pages/content/injected/myFeature'); // ✅ second feature, same injection
+import Root from '@pages/content/ui/root';   // ❌
+```
+
+Only the entry is restricted. `myFeature.ts` / `root.tsx` may static-import.
+
+## New injection vs extra file
+
+- Same matches → more `import()` in the existing entry, **or** another Vite key listed in the same `js: []`.
+- Different matches / `run_at` → new Vite key + new `content_scripts` `{}`. Manifest path is `src/pages/<key>/index.js`, not `src/pages/content/<folder>/index.js`.
+
+Stay **`world`: ISOLATED** (default). Split chunks + `import()` are not for MAIN world.
+
+## Styles
+
+- Shadow UI: `?inline` into the shadow root (`ui/root.tsx`).
+- Host page: `style.scss` → `contentStyle<KEY>.chunk.css`.
+- No bare `import './file.css'`.
