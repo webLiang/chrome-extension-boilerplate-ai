@@ -43,21 +43,29 @@
 
 ## Intro <a name="intro"></a>
 
-A Manifest V3 Chrome extension boilerplate built with React, TypeScript, and **Vite 8**.
+Ship a Manifest V3 Chrome extension this afternoon — React, TypeScript, and **Vite 8**, structured so both you and an AI coding agent can find the right file on the first try.
 
 > **Speed first:** Vite 8 ships a [Rolldown](https://rolldown.rs/)-based production bundler — multi-entry extension builds finish in hundreds of milliseconds instead of multi-second Rollup-era waits. Dev mode pairs that with HRR (hot rebuild & refresh) so iteration stays fast.
 
 ## Why this template <a name="why-this-template"></a>
 
-[Jonghakseo/chrome-extension-boilerplate-react-vite](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite) was a widely used React + Vite extension starter. It is now **archived** (read-only since 14 Feb 2026) and no longer maintained. Its later Turborepo layout is also heavy: many packages, slower `pnpm install` / `pnpm dev` boot, and a longer feedback loop.
+### The starter most people cloned is frozen
 
-This repository is an independently maintained **lean, speed-first** template:
+[Jonghakseo/chrome-extension-boilerplate-react-vite](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite) was the go-to React + Vite extension starter. It is **archived** (read-only since 14 Feb 2026). Vite never moved to the current major, and the later **Turborepo / multi-package** layout made a multi-entry app (popup + content + background) pay for a whole package graph before `pnpm install` or `pnpm dev` even felt ready.
 
-- Single package (no Turborepo)
-- Vite 8 + Rolldown — typical production build in ~100–300ms
-- Fast local HRR so you can iterate on popup / content / background without waiting on a monorepo graph
+### Frameworks are great — until you want to mix and match
 
-Inspired by the original project; this template evolves on its own.
+[Plasmo](https://www.plasmo.com/) and [WXT](https://wxt.dev/) are excellent if you want a full framework: generate a project, follow their conventions, ship. The trade-off is more magic and more rules. Swapping a UI library, dropping a page, or asking an AI “which file do I edit?” gets harder because the real graph lives behind the framework.
+
+This repo is a **boilerplate, not a framework**:
+
+- One package. Pages live in `src/pages/` — popup, content, background, options, side panel, new tab, DevTools
+- Bring Twind, Chakra, or the bundled SCSS. Keep what you need, delete the rest
+- [`AGENTS.md`](AGENTS.md) gives Cursor / Copilot the layout and commands so they start in the right place
+
+### Why this repo exists
+
+An independently maintained, **lean and AI-readable** template on **Vite 8 + Rolldown** (typical production build ~100–300ms) with fast local HRR. Inspired by the original project; this tree evolves on its own.
 
 ## Features <a name="features"></a>
 

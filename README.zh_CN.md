@@ -43,21 +43,29 @@
 
 ## 简介 <a name="简介"></a>
 
-基于 React、TypeScript 与 **Vite 8** 的 Manifest V3 Chrome 扩展脚手架。
+今天下午就能交一个 Manifest V3 Chrome 扩展：React、TypeScript、**Vite 8**。目录给人看、也给 AI 看，第一次就能找到该改的文件。
 
 > **速度优先：** Vite 8 内置 [Rolldown](https://rolldown.rs/) 生产打包；多入口扩展构建通常在 **数百毫秒** 级完成，明显快于旧版 Rollup 时代的数秒级等待。开发态配合 HRR（热重建与刷新），迭代同样轻快。
 
 ## 为什么用这个模板 <a name="为什么用这个模板"></a>
 
-[Jonghakseo/chrome-extension-boilerplate-react-vite](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite) 曾是常用的 React + Vite 扩展脚手架。该仓库已于 **2026-02-14 归档（只读）**，不再迭代。后期变成 Turborepo 多包结构后，安装、`pnpm dev` 启动和构建反馈都偏慢。
+### 大家常克隆的那份，已经停更了
 
-本仓库是独立维护的 **精简、速度优先** 模板：
+[Jonghakseo/chrome-extension-boilerplate-react-vite](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite) 曾是最常用的 React + Vite 扩展脚手架。仓库已于 **2026-02-14 归档（只读）**，不再迭代。Vite 停在旧大版本；后期改成 **Turborepo 多包** 之后，popup / content / background 这种多入口要先走完一整张包图，`pnpm install`、`pnpm dev` 启动都偏慢。
 
-- 单包（无 Turborepo）
-- Vite 8 + Rolldown — 生产构建通常约 100–300ms
-- 开发态 HRR，改 popup / content / background 不必等一整套 monorepo 图
+### 重框架好用，直到你想自由搭配
 
-致谢原项目，本模板独立演进。
+[Plasmo](https://www.plasmo.com/) 和 [WXT](https://wxt.dev/) 适合「按框架约定一键生成、照着文档做」。代价是约定多、魔法多：换样式库、丢掉某个页面、或让 AI 回答「改哪个文件」，都会卡在框架背后的真实结构上。
+
+本仓库是 **脚手架，不是框架**：
+
+- 单包。页面都在 `src/pages/`：popup、content、background、options、侧边栏、新标签页、DevTools
+- Twind、Chakra 或自带 SCSS，用哪个留哪个
+- [`AGENTS.md`](AGENTS.md) 写清目录和命令，Cursor / Copilot 能直接开工
+
+### 所以有这个仓库
+
+独立维护、**精简、给人和 AI 都好读**，基于 **Vite 8 + Rolldown**（生产构建通常约 100–300ms），开发态有 HRR。致谢原项目，本模板自己演进，不接上游。
 
 ## 特性 <a name="特性"></a>
 
