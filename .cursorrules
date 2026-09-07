@@ -1,0 +1,15 @@
+# chrome-extension-boilerplate-ai — Cursor entry
+
+Full map: **[AGENTS.md](AGENTS.md)** (especially **Path formula** and **Add an entry**). Cursor rules: `.cursor/rules/`. Skill: `.cursor/skills/add-extension-page/`. Human docs: README.md / README.zh_CN.md.
+
+## Hard constraints
+
+- Single package (no Turborepo / extra workspace packages)
+- Vite 8: `build.rolldownOptions`, not `rollupOptions`
+- Do not enable `inlineVitePreloadScript`
+- Content script **entry** files (`src/pages/content/**/index.ts`): dynamic `import()` only — no top-level static `import`
+- Content React CSS: `*.css?inline` / `*.scss?inline` into Shadow DOM — no bare CSS import
+- UI copy in `public/_locales/**`; comments and `console.*` in English
+- Conventional Commits (commitlint)
+
+Load unpacked from **`dist`**. After rebuild, Reload the extension then hard-refresh the page.

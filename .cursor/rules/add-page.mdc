@@ -1,0 +1,21 @@
+---
+description: Add or remove popup/options/background/content-script entries (Vite key = dist path)
+globs: vite.config.ts,manifest.js,src/pages/**
+alwaysApply: false
+---
+
+# Add an entry
+
+Full recipes: [AGENTS.md](../../AGENTS.md#add-an-entry). **Vite input key** = `dist/src/pages/<key>/index.js` = manifest path. Source folder can differ (`content/injected` → key `contentInjected` → `src/pages/contentInjected/index.js`).
+
+## Which path
+
+- More code, same injection → extra `import('./mod')` in existing `content/**/index.ts` (no new Vite key).
+- New matches / `run_at` / `all_frames` → new `src/pages/content/<name>/index.ts` + new `rolldownOptions.input` key + new `content_scripts` object. Manifest `js` uses the **key**.
+- Several files, same matches → one `content_scripts` item, `js: [keyA, keyB]` (each key still in Vite `input`).
+- HTML page → copy `popup/`, HTML `input`, manifest field.
+- Background → static import from `background/index.ts` only (already a module).
+
+Content **entry**: dynamic `import()` only. Do not use `"world": "MAIN"` on these split entries.
+
+After `pnpm build`, confirm `dist/src/pages/<key>/index.js` exists. Reload the unpacked extension.

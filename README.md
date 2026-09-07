@@ -476,6 +476,7 @@ manifest.json
 
 ## Documents <a name="documents"></a>
 
+- [AGENTS.md](AGENTS.md) — project map for Cursor / Codex
 - [Vite Plugin](https://vitejs.dev/guide/api-plugin.html)
 - [ChromeExtension](https://developer.chrome.com/docs/extensions/mv3/)
 - [Rollup](https://rollupjs.org/guide/en/)

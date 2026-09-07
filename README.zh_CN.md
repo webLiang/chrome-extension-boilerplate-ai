@@ -476,6 +476,7 @@ createRoot(rootIntoShadow).render(
 
 ## 参考文档 <a name="参考文档"></a>
 
+- [AGENTS.md](AGENTS.md) — Cursor / Codex 工程地图
 - [Vite Plugin](https://vitejs.dev/guide/api-plugin.html)
 - [Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/)
 - [Rollup](https://rollupjs.org/guide/en/)

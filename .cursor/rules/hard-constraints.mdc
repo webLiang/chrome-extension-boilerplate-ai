@@ -1,0 +1,16 @@
+---
+description: Always-on constraints for this Chrome MV3 Vite 8 boilerplate
+alwaysApply: true
+---
+
+# Hard constraints
+
+Read [AGENTS.md](../../AGENTS.md). Adding injected JS / pages: section **Add an entry**. Vite input **key** = `dist/src/pages/<key>/index.js` = manifest path. Do not invent a monorepo.
+
+- Single package. Do not add Turborepo or `packages/*`.
+- Vite 8: edit `build.rolldownOptions` in `vite.config.ts`, not `rollupOptions`.
+- Do not turn on `inlineVitePreloadScript`.
+- Manifest source is `manifest.js` (build writes `dist/manifest.json`). Version comes from `package.json`.
+- i18n: `public/_locales/**/messages.json`. Comments and logs: English.
+- Commits: Conventional Commits (`feat` `fix` `docs` `chore` …).
+- Unpacked root is `dist`. Tell the user to Reload the extension after SW/content changes.
