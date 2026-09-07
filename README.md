@@ -1,13 +1,13 @@
 <div align="center">
 <img src="public/icon-128.png" alt="logo"/>
-<h1> Chrome Extension Boilerplate with<br/>React + <b>Vite 8</b> + TypeScript</h1>
+<h1> Chrome Extension Boilerplate with<br/>React + <b>Vite 8</b> + TypeScript<br/><small>for AI-assisted development</small></h1>
 
 ![](https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white)
 ![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![](https://badges.aleen42.com/src/vitejs.svg)
-![GitHub action badge](https://github.com/webLiang/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
-<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/webLiang/chrome-extension-boilerplate-react-vite&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
+![GitHub action badge](https://github.com/webLiang/chrome-extension-boilerplate-ai/actions/workflows/build-zip.yml/badge.svg)
+<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/webLiang/chrome-extension-boilerplate-ai&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
 
 
 > Powered by **Vite 8 + Rolldown** for faster production builds and snappy local reload.<br/>
@@ -475,7 +475,7 @@ manifest.json
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=webLiang/chrome-extension-boilerplate-react-vite&type=Date)](https://star-history.com/#webLiang/chrome-extension-boilerplate-react-vite&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=webLiang/chrome-extension-boilerplate-ai&type=Date)](https://star-history.com/#webLiang/chrome-extension-boilerplate-ai&Date)
 
 ## Contributors
 
