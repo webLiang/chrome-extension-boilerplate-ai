@@ -40,10 +40,11 @@
     - [Devtools](#devtools)
 - [示例项目](#示例项目)
 - [参考文档](#参考文档)
+- [支持本项目](#支持本项目)
 
 ## 简介 <a name="简介"></a>
 
-今天下午就能交一个 Manifest V3 Chrome 扩展：React、TypeScript、**Vite 8**。目录给人看、也给 AI 看，第一次就能找到该改的文件。
+Manifest V3 Chrome 扩展脚手架：React、TypeScript、**Vite 8**。目录扁平、入口清楚，人和 AI 都能直接对上该改的文件。
 
 > **速度优先：** Vite 8 内置 [Rolldown](https://rolldown.rs/) 生产打包；多入口扩展构建通常在 **数百毫秒** 级完成，明显快于旧版 Rollup 时代的数秒级等待。开发态配合 HRR（热重建与刷新），迭代同样轻快。
 
@@ -481,6 +482,16 @@ createRoot(rootIntoShadow).render(
 - [Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/)
 - [Rollup](https://rollupjs.org/guide/en/)
 - [Rollup-plugin-chrome-extension](https://www.extend-chrome.dev/rollup-plugin)
+
+## 支持本项目
+
+如果这个脚手架对你有帮助，点个 ⭐ 可以帮助更多开发者发现它。
+
+<div align="center">
+
+<img src="./images/star-chrome-extension-boilerplate-ai.gif" alt="在 GitHub 上为本仓库点 Star 的操作演示" width="760" />
+
+</div>
 
 ## Star History
 

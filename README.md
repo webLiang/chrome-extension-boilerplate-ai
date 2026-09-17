@@ -40,10 +40,11 @@
     - [Devtools](#devtools)
 - [Examples](#examples)
 - [Documents](#documents)
+- [Support this project](#support-this-project)
 
 ## Intro <a name="intro"></a>
 
-Ship a Manifest V3 Chrome extension this afternoon — React, TypeScript, and **Vite 8**, structured so both you and an AI coding agent can find the right file on the first try.
+A Manifest V3 Chrome extension boilerplate with React, TypeScript, and **Vite 8**. The layout is flat and the entries are explicit, so both you and an AI coding agent can find the file to change.
 
 > **Speed first:** Vite 8 ships a [Rolldown](https://rolldown.rs/)-based production bundler — multi-entry extension builds finish in hundreds of milliseconds instead of multi-second Rollup-era waits. Dev mode pairs that with HRR (hot rebuild & refresh) so iteration stays fast.
 
@@ -481,6 +482,16 @@ manifest.json
 - [ChromeExtension](https://developer.chrome.com/docs/extensions/mv3/)
 - [Rollup](https://rollupjs.org/guide/en/)
 - [Rollup-plugin-chrome-extension](https://www.extend-chrome.dev/rollup-plugin)
+
+## Support this project
+
+If this boilerplate helped you, a ⭐ helps more developers find it.
+
+<div align="center">
+
+<img src="./images/star-chrome-extension-boilerplate-ai.gif" alt="How to star this repository on GitHub" width="760" />
+
+</div>
 
 ## Star History
 
